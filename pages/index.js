@@ -15,7 +15,9 @@ export default function Home(props) {
    *  Learn more about LIFF API documentation (https://developers.line.biz/en/reference/liff)
    **/
   const { liff, liffError } = props;
+  let version = liff.getVersion();
   let userId = liff.getProfile().userId;
+
   return (
     <div>
       <Head>
@@ -88,6 +90,7 @@ export default function Home(props) {
         </div>
       </div>
       <div>
+        <p>Version: {version}</p>
         <p>User ID: {userId}</p>
       </div>
     </div>

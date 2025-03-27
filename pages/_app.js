@@ -11,6 +11,7 @@ log('This is a debug message');
 function MyApp({ Component, pageProps }) {
   const [liffObject, setLiffObject] = useState(null);
   const [liffError, setLiffError] = useState(null);
+  const [isLiffInitialized, setIsLiffInitialized] = useState(false);
 
   // Execute liff.init() when the app is initialized
   useEffect(() => {
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }) {
       .then(() => {
         console.log("liff.init() done");
         setLiffObject(liff);
+        setIsLiffInitialized(true);
       })
       .catch((error) => {
         console.log(`liff.init() failed: ${error}`);
@@ -31,6 +33,10 @@ function MyApp({ Component, pageProps }) {
         setLiffError(error.toString());
       });
   }, []);
+
+  if (!isLiffInitialized) {
+    return <div>Loading...</div>;
+  }
 
   // Provide `liff` object and `liffError` object
   // to page component as property

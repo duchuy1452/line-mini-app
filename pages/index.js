@@ -15,9 +15,7 @@ export default function Home(props) {
    *  Learn more about LIFF API documentation (https://developers.line.biz/en/reference/liff)
    **/
   const { liff, liffError } = props;
-  log({
-    "test": "test"
-  });
+  let userId = liff.getProfile().userId;
   return (
     <div>
       <Head>
@@ -88,6 +86,9 @@ export default function Home(props) {
             Request Profile Permission
           </button>
         </div>
+      </div>
+      <div>
+        <p>User ID: {userId}</p>
       </div>
     </div>
   );

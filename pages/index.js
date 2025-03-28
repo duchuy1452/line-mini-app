@@ -96,7 +96,7 @@ export default function Home(props) {
       </div>
       <div>
         <p>Version: {version}</p>
-        <p>User ID: {userId}</p>
+        {/* <p>User ID: {userId}</p> */}
       </div>
     </div>
   );

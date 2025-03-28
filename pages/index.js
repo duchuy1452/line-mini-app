@@ -16,7 +16,12 @@ export default function Home(props) {
    **/
   const { liff, liffError } = props;
   let version = liff.getVersion();
-  let userId = liff.getProfile().userId;
+  if (liff.isLoggedIn()) {
+    version = "logined"
+  } else {
+    version = "not logined"
+  }
+  // let userId = liff.getProfile().userId;
 
   return (
     <div>

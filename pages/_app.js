@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     console.log("start liff.init()...");
     liff
-      .init({ liffId: process.env.LIFF_ID })
+      .init({ liffId: process.env.LIFF_ID, withLoginOnExternalBrowser: true })
       .then(() => {
         console.log("liff.init() done");
         setLiffObject(liff);

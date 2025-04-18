@@ -2,7 +2,9 @@ import React from 'react';
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { EmergencyForm, EmergencyData } from '../components/EmergencyForm';
+import Navigation from '../components/Navigation';
 import liff from '@line/liff';
+import '../styles/Navigation.css';
 
 interface HomeProps {
   liff: typeof liff;
@@ -31,53 +33,45 @@ export default function Home({ liff, liffError }: HomeProps) {
         await liff.sendMessages([
           {
             type: 'text',
-            text: `🚨 YÊU CẦU CỨU HỘ\n\nLoại sự cố: ${data.incident}\nVị trí: ${data.location}\nSĐT: ${data.phone}\nMô tả: ${data.description}`
+            text: `🚨 緊急救助要請\n\n種類: ${data.incident}\n位置: ${data.location}\n電話: ${data.phone}\n詳細: ${data.description}`
           }
         ]);
       }
 
-      alert('Yêu cầu cứu hộ đã được gửi thành công!');
+      alert('救助要請を送信しました！');
       setShowForm(false);
     } catch (error) {
       console.error('Error submitting emergency request:', error);
-      alert('Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại!');
+      alert('エラーが発生しました。もう一度お試しください。');
     }
   };
 
   if (liffError) {
-    return <div>Error: {liffError.message}</div>;
+    return <div>エラー: {liffError.message}</div>;
   }
 
   return (
     <div className="container">
       <Head>
-        <title>Dịch Vụ Cứu Hộ</title>
+        <title>緊急救助サービス</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       </Head>
 
       <main className="main">
         <h1 className="title">
-          Dịch Vụ Cứu Hộ 24/7
+          24時間緊急救助
         </h1>
 
         {name && (
           <p className="welcome">
-            Xin chào, {name}!
+            ようこそ、{name}さん！
           </p>
         )}
 
         <div className="description">
-          <p>Gặp sự cố? Đừng lo lắng!</p>
-          <p>Chúng tôi sẽ có mặt trong thời gian sớm nhất.</p>
+          <p>お困りですか？</p>
+          <p>すぐに駆けつけます。</p>
         </div>
-
-        <button
-          className="emergency-button"
-          onClick={() => setShowForm(true)}
-          aria-label="Yêu cầu cứu hộ"
-        >
-          🚨
-        </button>
 
         {showForm && (
           <EmergencyForm
@@ -86,6 +80,8 @@ export default function Home({ liff, liffError }: HomeProps) {
           />
         )}
       </main>
+
+      <Navigation onEmergencyClick={() => setShowForm(true)} />
 
       <style jsx>{`
         .container {

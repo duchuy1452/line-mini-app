@@ -28,65 +28,65 @@ export const EmergencyForm: React.FC<EmergencyFormProps> = ({ onSubmit, onClose 
   return (
     <div className="emergency-form-overlay">
       <div className="emergency-form">
-        <h2>Yêu Cầu Cứu Hộ</h2>
+        <h2>救助要請フォーム</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="incident">Loại Sự Cố *</label>
+            <label htmlFor="incident">トラブルの種類 *</label>
             <select
               id="incident"
               value={formData.incident}
               onChange={(e) => setFormData({ ...formData, incident: e.target.value })}
               required
             >
-              <option value="">Chọn loại sự cố</option>
-              <option value="flat_tire">Xẹp lốp</option>
-              <option value="battery">Hết bình/Chết máy</option>
-              <option value="accident">Tai nạn</option>
-              <option value="other">Khác</option>
+              <option value="">選択してください</option>
+              <option value="flat_tire">パンク</option>
+              <option value="battery">バッテリー切れ</option>
+              <option value="accident">事故</option>
+              <option value="other">その他</option>
             </select>
           </div>
 
           <div className="form-group">
-            <label htmlFor="location">Vị Trí *</label>
+            <label htmlFor="location">位置情報 *</label>
             <input
               type="text"
               id="location"
               value={formData.location}
               onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-              placeholder="Nhập địa chỉ của bạn"
+              placeholder="現在地を入力してください"
               required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="phone">Số Điện Thoại *</label>
+            <label htmlFor="phone">電話番号 *</label>
             <input
               type="tel"
               id="phone"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              placeholder="Nhập số điện thoại"
+              placeholder="電話番号を入力してください"
               required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="description">Mô Tả Chi Tiết</label>
+            <label htmlFor="description">詳細説明</label>
             <textarea
               id="description"
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              placeholder="Mô tả thêm về tình trạng xe của bạn"
+              placeholder="状況の詳細を入力してください"
               rows={3}
             />
           </div>
 
           <div className="form-actions">
             <button type="submit" className="submit-button">
-              Gửi Yêu Cầu
+              送信
             </button>
             <button type="button" onClick={onClose} className="cancel-button">
-              Hủy
+              キャンセル
             </button>
           </div>
         </form>

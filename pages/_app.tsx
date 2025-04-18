@@ -5,6 +5,7 @@ import debug from 'debug';
 
 import "../styles/globals.css";
 import '../styles/EmergencyForm.css';
+import '../styles/Navigation.css';
 
 const log = debug('myapp:log');
 

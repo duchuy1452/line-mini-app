@@ -39,17 +39,17 @@ export const EmergencyForm: React.FC<EmergencyFormProps> = ({ onSubmit, onClose 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setShowSuccess(true);
-    onSubmit(formData);
   };
 
   const handleClose = () => {
     setShowSuccess(false);
+    onSubmit(formData);
     onClose();
   };
 
   if (showSuccess) {
     return (
-      <div className="emergency-form-overlay">
+      <div className="emergency-form-overlay" onClick={(e) => e.stopPropagation()}>
         <div className="success-popup">
           <h3>救助要請を受け付けました</h3>
           <div className="details">
@@ -70,7 +70,7 @@ export const EmergencyForm: React.FC<EmergencyFormProps> = ({ onSubmit, onClose 
   }
 
   return (
-    <div className="emergency-form-overlay">
+    <div className="emergency-form-overlay" onClick={(e) => e.stopPropagation()}>
       <div className="emergency-form">
         <h2>救助要請フォーム</h2>
         <form onSubmit={handleSubmit}>

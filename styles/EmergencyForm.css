@@ -48,6 +48,14 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.form-group input {
+  max-width: 100%;
 }
 
 .form-group textarea {

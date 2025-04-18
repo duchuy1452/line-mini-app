@@ -22,27 +22,9 @@ export default function Home({ liff, liffError }: HomeProps) {
     }
   }, [liff]);
 
-  const handleEmergencySubmit = async (data: EmergencyData) => {
-    try {
-      // Tại đây bạn có thể thêm logic để gửi dữ liệu đến server
-      console.log('Emergency data:', data);
-      
-      // Gửi tin nhắn qua LINE (nếu cần)
-      if (liff.isLoggedIn()) {
-        await liff.sendMessages([
-          {
-            type: 'text',
-            text: `🚨 緊急救助要請\n\n種類: ${data.incident}\n位置: ${data.location}\n電話: ${data.phone}\n詳細: ${data.description}`
-          }
-        ]);
-      }
-
-      alert('救助要請を送信しました！');
-      setShowForm(false);
-    } catch (error) {
-      console.error('Error submitting emergency request:', error);
-      alert('エラーが発生しました。もう一度お試しください。');
-    }
+  const handleEmergencySubmit = (data: EmergencyData) => {
+    console.log('Emergency data:', data);
+    setShowForm(false);
   };
 
   if (liffError) {

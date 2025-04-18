@@ -4,26 +4,29 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 20px;
 }
 
 .emergency-form {
   background: white;
   padding: 20px;
   border-radius: 12px;
-  width: 90%;
+  width: 100%;
   max-width: 500px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .emergency-form h2 {
   color: #e74c3c;
   margin-bottom: 20px;
   text-align: center;
+  font-size: 1.5rem;
 }
 
 .form-group {
@@ -33,22 +36,23 @@
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
-.form-group input,
 .form-group select,
+.form-group input,
 .form-group textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 
 .form-group textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 100px;
 }
 
 .form-actions {
@@ -62,29 +66,93 @@
   flex: 1;
   padding: 12px;
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: bold;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .submit-button {
-  background-color: #e74c3c;
+  background: #e74c3c;
   color: white;
-}
-
-.submit-button:hover {
-  background-color: #c0392b;
 }
 
 .cancel-button {
-  background-color: #95a5a6;
-  color: white;
+  background: #eee;
+  color: #333;
 }
 
-.cancel-button:hover {
-  background-color: #7f8c8d;
+/* Success Popup Styles */
+.success-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1100;
+  width: 90%;
+  max-width: 400px;
+}
+
+.success-popup h3 {
+  color: #27ae60;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.success-popup .details {
+  margin: 15px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.success-popup .details p {
+  margin: 8px 0;
+  font-size: 0.9rem;
+}
+
+.success-popup button {
+  width: 100%;
+  padding: 12px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .emergency-form {
+    padding: 15px;
+  }
+
+  .emergency-form h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .form-group select,
+  .form-group input,
+  .form-group textarea {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .submit-button,
+  .cancel-button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
 }
 
 .emergency-button {

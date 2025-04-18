@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 import { EmergencyForm, EmergencyData } from '../components/EmergencyForm';
 import Navigation from '../components/Navigation';
 import liff from '@line/liff';
@@ -11,6 +12,7 @@ interface HomeProps {
 }
 
 export default function Home({ liff, liffError }: HomeProps) {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [showForm, setShowForm] = useState(false);
 
@@ -21,6 +23,15 @@ export default function Home({ liff, liffError }: HomeProps) {
       });
     }
   }, [liff]);
+
+  // Kiểm tra query parameter khi component mount hoặc route thay đổi
+  useEffect(() => {
+    if (router.query.showEmergencyForm === 'true') {
+      setShowForm(true);
+      // Xóa query parameter sau khi đã xử lý
+      router.replace('/', undefined, { shallow: true });
+    }
+  }, [router.query]);
 
   const handleEmergencySubmit = (data: EmergencyData) => {
     console.log('Emergency data:', data);

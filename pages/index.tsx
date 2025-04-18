@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import { EmergencyForm, EmergencyData } from '../components/EmergencyForm';
-import Navigation from '../components/Navigation';
+import Navigation from '@/components/Navigation';
 import liff from '@line/liff';
 
 interface HomeProps {

@@ -1,19 +1,30 @@
 declare module '@line/liff' {
-  import { Liff } from '@line/liff';
-  
-  export interface LiffWindow extends Window {
-    liff?: Liff;
+  interface Liff {
+    init: (config: Config) => Promise<void>;
+    getProfile: () => Promise<Profile>;
+    isLoggedIn: () => boolean;
+    login: () => void;
+    logout: () => void;
+    getVersion: () => string;
+    sendMessages: (messages: Array<{ type: string; text: string }>) => Promise<void>;
+    permission: {
+      query: (permission: string) => Promise<{ state: string }>;
+      requestAll: () => Promise<void>;
+    };
   }
 
-  export interface Profile {
+  interface Profile {
     displayName: string;
     userId: string;
     pictureUrl?: string;
     statusMessage?: string;
   }
 
-  export interface Config {
+  interface Config {
     liffId: string;
     withLoginOnExternalBrowser?: boolean;
   }
+
+  const liff: Liff;
+  export default liff;
 } 

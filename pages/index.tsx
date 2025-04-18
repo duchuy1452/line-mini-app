@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from "next/head";
-import { useEffect } from "react";
-import { Liff } from "@line/liff";
+import { useEffect, useState } from "react";
 import { EmergencyForm, EmergencyData } from '../components/EmergencyForm';
-import '../styles/EmergencyForm.css';
+import liff from '@line/liff';
 
 interface HomeProps {
-  liff: Liff;
+  liff: typeof liff;
   liffError?: Error;
 }
 

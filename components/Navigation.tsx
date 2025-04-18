@@ -1,14 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface NavigationProps {
   onEmergencyClick: () => void;
 }
 
-export const Navigation: React.FC<NavigationProps> = ({ onEmergencyClick }) => {
+const Navigation: React.FC<NavigationProps> = ({ onEmergencyClick }) => {
+  const router = useRouter();
+
+  const handleEmergencyClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (router.pathname !== '/') {
+      // Nếu không ở trang chủ, chuyển về trang chủ với query parameter
+      await router.push('/?showEmergencyForm=true');
+    } else {
+      // Nếu đã ở trang chủ, mở form ngay
+      onEmergencyClick();
+    }
+  };
+
   return (
     <nav className="navigation">
-      <button onClick={onEmergencyClick} className="nav-button emergency">
+      <button onClick={handleEmergencyClick} className="nav-button emergency">
         <span className="icon">🚨</span>
         <span>救助要請</span>
       </button>

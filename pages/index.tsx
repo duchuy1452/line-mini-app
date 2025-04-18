@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { EmergencyForm, EmergencyData } from '../components/EmergencyForm';
 import Navigation from '../components/Navigation';
 import liff from '@line/liff';
-import '../styles/Navigation.css';
 
 interface HomeProps {
   liff: typeof liff;
